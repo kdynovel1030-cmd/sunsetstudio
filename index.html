@@ -18,6 +18,7 @@
   <meta property="og:title" content="SunSetStudio — Cubeast | 6면 코어 큐브 로그라이크 덱빌딩" />
   <meta property="og:description" content="나만의 큐비스트 1마리, 공방 v2, 6면 코어 큐브 로그라이크 덱빌딩. Steam 및 텀블벅 출시 예정." />
   <meta property="og:url" content="https://kdynovel1030-cmd.github.io/sunsetstudio/" />
+  <meta property="og:image" content="https://kdynovel1030-cmd.github.io/sunsetstudio/images/04b_battle_pokemon_cam.png" />
 
   <!-- 인라인 SVG 파비콘 (크림 & 청록 큐브) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23FBF4E4'/%3E%3Cpolygon points='32,10 52,21 32,32 12,21' fill='%2325B3AD'/%3E%3Cpolygon points='12,21 32,32 32,54 12,43' fill='%231C9994'/%3E%3Cpolygon points='52,21 32,32 32,54 52,43' fill='%23147470'/%3E%3C/svg%3E" />
@@ -297,8 +298,8 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-      gap: 44px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.06fr);
+      gap: 40px;
       align-items: center;
     }
 
@@ -364,24 +365,24 @@
       gap: 12px;
     }
 
-    /* 인터랙티브 6면 코어 큐브 쇼케이스 카드 */
-    .cube-showcase {
+    /* Cubeast 시안 미리보기 카드 */
+    .preview-showcase {
       background: var(--bg-surface);
       border-radius: var(--radius-lg);
-      padding: 28px;
+      padding: 22px;
       box-shadow: var(--shadow-md);
       position: relative;
       overflow: hidden;
     }
 
-    .cube-showcase::before {
+    .preview-showcase::before {
       content: "";
       position: absolute;
-      inset: -40% -20% auto auto;
+      inset: -35% -15% auto auto;
       width: 240px;
       height: 240px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(28, 153, 148, 0.14) 0%, rgba(28, 153, 148, 0) 70%);
+      background: radial-gradient(circle, rgba(28, 153, 148, 0.12) 0%, rgba(28, 153, 148, 0) 70%);
       pointer-events: none;
     }
 
@@ -390,14 +391,16 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
     }
 
     .showcase-label {
       font-size: 0.82rem;
       font-weight: 800;
       color: var(--teal-dark);
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
     }
 
@@ -410,76 +413,318 @@
       border-radius: var(--radius-pill);
     }
 
-    .cube-stage {
-      display: grid;
-      place-items: center;
-      padding: 14px 0 18px;
+    .preview-stage {
+      position: relative;
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: none;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--bg-cream);
+      box-shadow: var(--shadow-sm);
+      aspect-ratio: 16 / 9;
+      margin-bottom: 12px;
     }
 
-    .cube-svg {
-      width: 196px;
-      height: 196px;
-      filter: drop-shadow(0 16px 24px rgba(28, 153, 148, 0.18));
+    .preview-stage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
       transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .cube-showcase:hover .cube-svg {
-      transform: translateY(-4px) scale(1.02);
+    .preview-stage:hover img,
+    .preview-stage:focus-visible img {
+      transform: scale(1.025);
     }
 
-    .face-selector {
+    .preview-stage:focus-visible {
+      outline: 3px solid var(--teal);
+      outline-offset: 2px;
+    }
+
+    .preview-zoom-hint {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 11px;
+      border-radius: var(--radius-pill);
+      background: rgba(35, 31, 27, 0.74);
+      color: #FFFFFF;
+      font-size: 0.76rem;
+      font-weight: 700;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .preview-thumbs {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-bottom: 16px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
     }
 
-    .face-btn {
-      padding: 9px 8px;
+    .preview-thumb-btn {
+      padding: 6px;
       border: none;
-      border-radius: 12px;
+      border-radius: 14px;
       background: var(--bg-cream);
       color: var(--ink-secondary);
-      font-size: 0.84rem;
-      font-weight: 700;
-      text-align: center;
-      transition: background var(--transition), color var(--transition), transform var(--transition);
+      text-align: left;
+      transition: background var(--transition), color var(--transition), transform var(--transition), box-shadow var(--transition);
     }
 
-    .face-btn:hover {
+    .preview-thumb-btn:hover,
+    .preview-thumb-btn:focus-visible {
       background: var(--teal-soft);
       color: var(--teal-dark);
+      transform: translateY(-1px);
+      outline: none;
     }
 
     /* U8: 고른 것 = 청록 + 흰 글씨 */
-    .face-btn.active {
+    .preview-thumb-btn.active {
       background: var(--teal);
       color: #FFFFFF;
-      box-shadow: 0 6px 14px rgba(28, 153, 148, 0.25);
+      box-shadow: 0 8px 18px rgba(28, 153, 148, 0.26);
     }
 
-    .face-detail {
+    .preview-thumb-img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 9px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .preview-thumb-label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-align: center;
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .preview-caption {
       background: var(--bg-cream);
-      border-radius: 16px;
-      padding: 16px 18px;
-      min-height: 92px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      border-radius: 14px;
+      padding: 14px 16px;
     }
 
-    .face-detail-title {
-      font-size: 0.96rem;
+    .preview-caption-title {
+      font-size: 0.95rem;
       font-weight: 800;
       color: var(--teal-deeper);
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
 
-    .face-detail-text {
-      font-size: 0.88rem;
+    .preview-caption-text {
+      font-size: 0.87rem;
       color: var(--ink-secondary);
       margin: 0;
-      line-height: 1.55;
+      line-height: 1.5;
+    }
+
+    /* 시안 갤러리 패널 (Cubeast 섹션 내부) */
+    .gallery-panel {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 32px;
+      scroll-margin-top: 92px;
+    }
+
+    .gallery-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .gallery-header h3 {
+      margin: 0;
+      font-size: 1.12rem;
+      font-weight: 800;
+    }
+
+    .gallery-header span {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--teal-dark);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .gallery-card {
+      background: var(--bg-cream);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .gallery-img-btn {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: none;
+      background: transparent;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      position: relative;
+    }
+
+    .gallery-img-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .gallery-card:hover .gallery-img-btn img {
+      transform: scale(1.03);
+    }
+
+    .gallery-card-body {
+      padding: 16px 18px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .gallery-badge {
+      align-self: flex-start;
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: var(--teal-dark);
+      background: var(--teal-soft);
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+    }
+
+    .gallery-card-body h4 {
+      margin: 2px 0 0;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+
+    .gallery-card-body p {
+      margin: 0;
+      font-size: 0.86rem;
+      color: var(--ink-secondary);
+      line-height: 1.5;
+    }
+
+    /* 라이트박스 모달 */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(24, 21, 18, 0.84);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-dialog {
+      width: 100%;
+      max-width: 1040px;
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    .lightbox-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .lightbox-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .lightbox-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lightbox-btn {
+      padding: 7px 13px;
+      border: none;
+      border-radius: var(--radius-pill);
+      background: var(--bg-cream);
+      color: var(--ink);
+      font-size: 0.84rem;
+      font-weight: 700;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .lightbox-btn:hover,
+    .lightbox-btn:focus-visible {
+      background: var(--teal);
+      color: #FFFFFF;
+      outline: none;
+    }
+
+    .lightbox-frame {
+      border-radius: 14px;
+      overflow: hidden;
+      background: #1C1917;
+      aspect-ratio: 16 / 9;
+    }
+
+    .lightbox-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .lightbox-desc {
+      margin: 12px 2px 2px;
+      font-size: 0.9rem;
+      color: var(--ink-secondary);
     }
 
     /* 스튜디오 소개 섹션 */
@@ -883,7 +1128,8 @@
       }
 
       .studio-grid,
-      .features-grid {
+      .features-grid,
+      .gallery-grid {
         grid-template-columns: 1fr;
       }
 
@@ -974,6 +1220,7 @@
       <nav class="nav-links" id="primaryNav" aria-label="주요 메뉴">
         <a href="#studio">스튜디오 소개</a>
         <a href="#cubeast">Cubeast</a>
+        <a href="#gallery">시안 갤러리</a>
         <a href="#release">출시 예정</a>
         <a href="#contact" class="nav-cta">연락처</a>
       </nav>
@@ -1013,52 +1260,36 @@
           </div>
         </div>
 
-        <!-- 인터랙티브 6면 코어 큐브 프리뷰 -->
-        <aside class="cube-showcase" aria-label="6면 코어 큐브 미리보기">
+        <!-- Cubeast 개발 시안 미리보기 -->
+        <aside class="preview-showcase" aria-label="Cubeast 개발 시안 미리보기">
           <div class="showcase-top">
-            <span class="showcase-label">6-Face Core Cube</span>
-            <span class="showcase-tag">면을 눌러 확인</span>
+            <span class="showcase-label">Cubeast Preview</span>
+            <span class="showcase-tag">개발 시안 3종</span>
           </div>
 
-          <div class="cube-stage">
-            <svg class="cube-svg" viewBox="0 0 220 220" role="img" aria-label="Cubeast 6면 코어 큐브 일러스트">
-              <!-- 바닥 옅은 그림자 -->
-              <ellipse cx="110" cy="196" rx="64" ry="12" fill="rgba(28, 153, 148, 0.14)" />
-              <!-- 큐브 윗면 -->
-              <polygon id="cubeTop" points="110,24 186,66 110,108 34,66" fill="#27B8B2" />
-              <!-- 큐브 왼쪽면 -->
-              <polygon id="cubeLeft" points="34,66 110,108 110,184 34,142" fill="#1C9994" />
-              <!-- 큐브 오른쪽면 -->
-              <polygon id="cubeRight" points="186,66 110,108 110,184 186,142" fill="#147470" />
+          <button class="preview-stage" type="button" id="heroPreviewTrigger" aria-label="선택된 시안 크게 보기">
+            <img id="heroPreviewImg" src="images/04b_battle_pokemon_cam.png" alt="Cubeast 3D 전투 화면 시안" />
+            <span class="preview-zoom-hint">클릭해 크게 보기</span>
+          </button>
 
-              <!-- 코어 격자선 (크림 톤 포인트) -->
-              <g stroke="#FBF4E4" stroke-opacity="0.45" stroke-width="2" fill="none">
-                <line x1="72" y1="45" x2="148" y2="87" />
-                <line x1="148" y1="45" x2="72" y2="87" />
-                <line x1="72" y1="87" x2="72" y2="163" />
-                <line x1="34" y1="104" x2="110" y2="146" />
-                <line x1="148" y1="87" x2="148" y2="163" />
-                <line x1="186" y1="104" x2="110" y2="146" />
-              </g>
-
-              <!-- 중앙 코어 핵 -->
-              <circle cx="110" cy="108" r="14" fill="#FBF4E4" />
-              <circle id="cubeCoreDot" cx="110" cy="108" r="7" fill="#1C9994" />
-            </svg>
+          <div class="preview-thumbs" role="tablist" aria-label="시안 미리보기 선택">
+            <button class="preview-thumb-btn active" type="button" role="tab" aria-selected="true" data-slide="0">
+              <img class="preview-thumb-img" src="images/04b_battle_pokemon_cam.png" alt="전투 화면 썸네일" />
+              <span class="preview-thumb-label">전투 화면</span>
+            </button>
+            <button class="preview-thumb-btn" type="button" role="tab" aria-selected="false" data-slide="1">
+              <img class="preview-thumb-img" src="images/03d_seamless_fork_3d.png" alt="3D 탐험 갈림길 썸네일" />
+              <span class="preview-thumb-label">3D 탐험</span>
+            </button>
+            <button class="preview-thumb-btn" type="button" role="tab" aria-selected="false" data-slide="2">
+              <img class="preview-thumb-img" src="images/01_forge.png" alt="큐비스트 공방 썸네일" />
+              <span class="preview-thumb-label">큐비스트 공방</span>
+            </button>
           </div>
 
-          <div class="face-selector" role="tablist" aria-label="코어 큐브 6면 선택">
-            <button class="face-btn active" type="button" role="tab" aria-selected="true" data-face="0">1면 · 코어</button>
-            <button class="face-btn" type="button" role="tab" aria-selected="false" data-face="1">2면 · 공격</button>
-            <button class="face-btn" type="button" role="tab" aria-selected="false" data-face="2">3면 · 방어</button>
-            <button class="face-btn" type="button" role="tab" aria-selected="false" data-face="3">4면 · 공방</button>
-            <button class="face-btn" type="button" role="tab" aria-selected="false" data-face="4">5면 · 시너지</button>
-            <button class="face-btn" type="button" role="tab" aria-selected="false" data-face="5">6면 · 각성</button>
-          </div>
-
-          <div class="face-detail" id="faceDetail" aria-live="polite">
-            <div class="face-detail-title" id="faceTitle">1면 · 나만의 큐비스트 코어</div>
-            <p class="face-detail-text" id="faceDesc">단 한 마리의 큐비스트가 지닌 고유 정체성. 여정의 시작부터 끝까지 모든 빌드의 중심이 됩니다.</p>
+          <div class="preview-caption" id="previewCaption" aria-live="polite">
+            <div class="preview-caption-title" id="previewTitle">6면 코어 큐브 &amp; 카드 전술 전투</div>
+            <p class="preview-caption-text" id="previewDesc">3D 전장에서 나만의 큐비스트와 코어 큐브, 카드를 조합해 적의 예고된 공격과 방어에 대응합니다.</p>
           </div>
         </aside>
       </div>
@@ -1182,6 +1413,48 @@
               <span class="chip">로그라이크 리플레이</span>
             </div>
           </article>
+        </div>
+
+        <!-- Cubeast 시안 갤러리 -->
+        <div id="gallery" class="gallery-panel" aria-label="Cubeast 개발 시안 갤러리">
+          <div class="gallery-header">
+            <h3>Cubeast 시안 갤러리</h3>
+            <span>이미지를 클릭하면 원본 크기로 볼 수 있습니다</span>
+          </div>
+          <div class="gallery-grid">
+            <article class="gallery-card">
+              <button class="gallery-img-btn" type="button" data-open-lightbox="0" aria-label="전투 화면 시안 크게 보기">
+                <img src="images/04b_battle_pokemon_cam.png" alt="Cubeast 3D 전투 화면 시안" loading="lazy" />
+              </button>
+              <div class="gallery-card-body">
+                <span class="gallery-badge">BATTLE</span>
+                <h4>6면 코어 큐브 &amp; 카드 전투</h4>
+                <p>예고된 적의 행동과 코어 큐브 주사위, 카드를 엮어 매 턴 최적의 돌파구를 설계하는 3D 전투 시안입니다.</p>
+              </div>
+            </article>
+
+            <article class="gallery-card">
+              <button class="gallery-img-btn" type="button" data-open-lightbox="1" aria-label="3D 탐험 갈림길 시안 크게 보기">
+                <img src="images/03d_seamless_fork_3d.png" alt="Cubeast 3D 심리스 탐험 갈림길 시안" loading="lazy" />
+              </button>
+              <div class="gallery-card-body">
+                <span class="gallery-badge">EXPLORE</span>
+                <h4>심리스 3D 갈림길 탐험</h4>
+                <p>전장 위에서 바로 이어지는 3D 분기 경로를 따라 다음 전투·이벤트·보스 스테이지를 선택하는 탐험 시안입니다.</p>
+              </div>
+            </article>
+
+            <article class="gallery-card">
+              <button class="gallery-img-btn" type="button" data-open-lightbox="2" aria-label="큐비스트 공방 시안 크게 보기">
+                <img src="images/01_forge.png" alt="Cubeast 큐비스트 공방 커스터마이징 시안" loading="lazy" />
+              </button>
+              <div class="gallery-card-body">
+                <span class="gallery-badge">FORGE</span>
+                <h4>큐비스트 공방 v2</h4>
+                <p>몸·틀과 크기, 56종 색·표면 패턴, 표정과 자유 부착물을 조합해 나만의 큐비스트 1마리를 완성하는 공방 시안입니다.</p>
+              </div>
+            </article>
+          </div>
         </div>
 
         <!-- 코어 플레이 루프 -->
@@ -1309,20 +1582,12 @@
             <div class="contact-item">
               <div class="contact-item-info">
                 <small>공식 이메일</small>
-                <strong id="studioEmail">kdynovel1030@gmail.com</strong>
+                <strong id="studioEmail">sunsetstudiogm@gmail.com</strong>
               </div>
               <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                <a class="mini-btn" href="mailto:kdynovel1030@gmail.com?subject=%5BSunSetStudio%20%2F%20Cubeast%5D%20%EB%AC%B8%EC%9D%98">메일 보내기</a>
+                <a class="mini-btn" href="mailto:sunsetstudiogm@gmail.com?subject=%5BSunSetStudio%20%2F%20Cubeast%5D%20%EB%AC%B8%EC%9D%98">메일 보내기</a>
                 <button class="mini-btn" type="button" id="copyEmailBtn" style="background: var(--bg-surface); color: var(--teal-dark); box-shadow: var(--shadow-sm);">복사</button>
               </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-item-info">
-                <small>GitHub</small>
-                <strong>github.com/kdynovel1030-cmd</strong>
-              </div>
-              <a class="mini-btn" href="https://github.com/kdynovel1030-cmd" target="_blank" rel="noopener noreferrer">방문하기</a>
             </div>
           </div>
         </div>
@@ -1340,12 +1605,31 @@
       <div class="footer-links">
         <a href="#studio">스튜디오</a>
         <a href="#cubeast">Cubeast</a>
+        <a href="#gallery">시안 갤러리</a>
         <a href="#release">출시 예정</a>
         <a href="#contact">연락처</a>
         <a href="#top">맨 위로 ↑</a>
       </div>
     </div>
   </footer>
+
+  <!-- 시안 이미지 확대 모달 -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle" aria-hidden="true">
+    <div class="lightbox-dialog">
+      <div class="lightbox-top">
+        <div class="lightbox-title" id="lightboxTitle">시안 미리보기</div>
+        <div class="lightbox-controls">
+          <button class="lightbox-btn" type="button" id="lightboxPrev" aria-label="이전 시안">← 이전</button>
+          <button class="lightbox-btn" type="button" id="lightboxNext" aria-label="다음 시안">다음 →</button>
+          <button class="lightbox-btn" type="button" id="lightboxClose" aria-label="닫기">닫기 ✕</button>
+        </div>
+      </div>
+      <div class="lightbox-frame">
+        <img id="lightboxImg" src="images/04b_battle_pokemon_cam.png" alt="Cubeast 시안 확대 이미지" />
+      </div>
+      <p class="lightbox-desc" id="lightboxDesc"></p>
+    </div>
+  </div>
 
   <script>
     (function () {
@@ -1365,86 +1649,135 @@
         });
       }
 
-      // 6면 코어 큐브 인터랙션
-      var faces = [
+      // Cubeast 시안 미리보기 & 라이트박스 데이터
+      var slides = [
         {
-          title: "1면 · 나만의 큐비스트 코어",
-          desc: "단 한 마리의 큐비스트가 지닌 고유 정체성. 여정의 시작부터 끝까지 모든 빌드의 중심이 됩니다.",
-          top: "#27B8B2",
-          left: "#1C9994",
-          right: "#147470",
-          dot: "#1C9994"
+          src: "images/04b_battle_pokemon_cam.png",
+          alt: "Cubeast 3D 전투 화면 시안",
+          title: "6면 코어 큐브 & 카드 전술 전투",
+          desc: "3D 전장에서 나만의 큐비스트와 코어 큐브, 카드를 조합해 적의 예고된 공격과 방어에 대응합니다."
         },
         {
-          title: "2면 · 전술 공격 면",
-          desc: "연쇄 타격과 조건부 증폭 효과를 배치해 원하는 타이밍에 결정적인 화력을 폭발시킵니다.",
-          top: "#E6845C",
-          left: "#D96B43",
-          right: "#147470",
-          dot: "#D96B43"
+          src: "images/03d_seamless_fork_3d.png",
+          alt: "Cubeast 3D 심리스 탐험 갈림길 시안",
+          title: "심리스 3D 갈림길 탐험",
+          desc: "화면 전환 없이 이어지는 3D 갈림길에서 다음 전투와 이벤트, 보스 경로를 직접 선택합니다."
         },
         {
-          title: "3면 · 방어 & 대응 면",
-          desc: "사전 예고된 적의 위협에 맞춰 보호막, 반격, 위치 제어 효과를 설계해 피해를 최소화합니다.",
-          top: "#27B8B2",
-          left: "#147470",
-          right: "#0F5956",
-          dot: "#147470"
-        },
-        {
-          title: "4면 · 공방 v2 개조 슬롯",
-          desc: "공방 v2에서 파츠를 교체·강화하고 불필요한 면을 정리해 군더더기 없는 덱으로 압축합니다.",
-          top: "#33C4BE",
-          left: "#1C9994",
-          right: "#176E6A",
-          dot: "#27B8B2"
-        },
-        {
-          title: "5면 · 회전 시너지 면",
-          desc: "큐브를 회전시켰을 때 인접한 면과 맞물려 추가 발동과 연쇄 콤보를 일으키는 핵심 축입니다.",
-          top: "#1C9994",
-          left: "#27B8B2",
-          right: "#147470",
-          dot: "#1C9994"
-        },
-        {
-          title: "6면 · 각성 & 결전 면",
-          desc: "조건이 누적되면 열리는 마지막 6번째 면. 나만의 큐비스트 빌드를 완성하는 피니셔 역할을 맡습니다.",
-          top: "#23A8A2",
-          left: "#167C78",
-          right: "#D96B43",
-          dot: "#D96B43"
+          src: "images/01_forge.png",
+          alt: "Cubeast 큐비스트 공방 커스터마이징 시안",
+          title: "큐비스트 공방 v2 커스터마이징",
+          desc: "몸·틀, 색·표면 패턴, 표정과 자유 부착물을 조합해 세상에 하나뿐인 나만의 큐비스트를 제작합니다."
         }
       ];
 
-      var faceBtns = document.querySelectorAll(".face-btn");
-      var faceTitle = document.getElementById("faceTitle");
-      var faceDesc = document.getElementById("faceDesc");
-      var cubeTop = document.getElementById("cubeTop");
-      var cubeLeft = document.getElementById("cubeLeft");
-      var cubeRight = document.getElementById("cubeRight");
-      var cubeCoreDot = document.getElementById("cubeCoreDot");
+      var currentSlide = 0;
+      var heroPreviewImg = document.getElementById("heroPreviewImg");
+      var previewTitle = document.getElementById("previewTitle");
+      var previewDesc = document.getElementById("previewDesc");
+      var thumbBtns = document.querySelectorAll(".preview-thumb-btn");
+      var heroPreviewTrigger = document.getElementById("heroPreviewTrigger");
 
-      faceBtns.forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          var idx = Number(btn.getAttribute("data-face"));
-          var data = faces[idx];
-          if (!data) return;
+      function selectSlide(idx) {
+        var data = slides[idx];
+        if (!data) return;
+        currentSlide = idx;
 
-          faceBtns.forEach(function (b) {
-            b.classList.remove("active");
-            b.setAttribute("aria-selected", "false");
-          });
-          btn.classList.add("active");
-          btn.setAttribute("aria-selected", "true");
+        if (heroPreviewImg) {
+          heroPreviewImg.src = data.src;
+          heroPreviewImg.alt = data.alt;
+        }
+        if (previewTitle) previewTitle.textContent = data.title;
+        if (previewDesc) previewDesc.textContent = data.desc;
 
-          faceTitle.textContent = data.title;
-          faceDesc.textContent = data.desc;
-          cubeTop.setAttribute("fill", data.top);
-          cubeLeft.setAttribute("fill", data.left);
-          cubeRight.setAttribute("fill", data.right);
-          cubeCoreDot.setAttribute("fill", data.dot);
+        thumbBtns.forEach(function (btn) {
+          var isActive = Number(btn.getAttribute("data-slide")) === idx;
+          btn.classList.toggle("active", isActive);
+          btn.setAttribute("aria-selected", String(isActive));
         });
+      }
+
+      thumbBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          selectSlide(Number(btn.getAttribute("data-slide")));
+        });
+      });
+
+      // 라이트박스 모달
+      var lightbox = document.getElementById("lightbox");
+      var lightboxImg = document.getElementById("lightboxImg");
+      var lightboxTitle = document.getElementById("lightboxTitle");
+      var lightboxDesc = document.getElementById("lightboxDesc");
+      var lightboxPrev = document.getElementById("lightboxPrev");
+      var lightboxNext = document.getElementById("lightboxNext");
+      var lightboxClose = document.getElementById("lightboxClose");
+      var lightboxIndex = 0;
+
+      function renderLightbox(idx) {
+        lightboxIndex = (idx + slides.length) % slides.length;
+        var data = slides[lightboxIndex];
+        if (lightboxImg) {
+          lightboxImg.src = data.src;
+          lightboxImg.alt = data.alt;
+        }
+        if (lightboxTitle) lightboxTitle.textContent = data.title + " (" + (lightboxIndex + 1) + " / " + slides.length + ")";
+        if (lightboxDesc) lightboxDesc.textContent = data.desc;
+      }
+
+      function openLightbox(idx) {
+        if (!lightbox) return;
+        renderLightbox(idx);
+        lightbox.classList.add("open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.remove("open");
+        lightbox.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      if (heroPreviewTrigger) {
+        heroPreviewTrigger.addEventListener("click", function () {
+          openLightbox(currentSlide);
+        });
+      }
+
+      document.querySelectorAll("[data-open-lightbox]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          openLightbox(Number(btn.getAttribute("data-open-lightbox")));
+        });
+      });
+
+      if (lightboxPrev) {
+        lightboxPrev.addEventListener("click", function () {
+          renderLightbox(lightboxIndex - 1);
+        });
+      }
+
+      if (lightboxNext) {
+        lightboxNext.addEventListener("click", function () {
+          renderLightbox(lightboxIndex + 1);
+        });
+      }
+
+      if (lightboxClose) {
+        lightboxClose.addEventListener("click", closeLightbox);
+      }
+
+      if (lightbox) {
+        lightbox.addEventListener("click", function (e) {
+          if (e.target === lightbox) closeLightbox();
+        });
+      }
+
+      document.addEventListener("keydown", function (e) {
+        if (!lightbox || !lightbox.classList.contains("open")) return;
+        if (e.key === "Escape") closeLightbox();
+        else if (e.key === "ArrowLeft") renderLightbox(lightboxIndex - 1);
+        else if (e.key === "ArrowRight") renderLightbox(lightboxIndex + 1);
       });
 
       // 이메일 원클릭 복사
