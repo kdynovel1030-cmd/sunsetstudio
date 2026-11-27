@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SunSetStudio — Cubeast 공식 안내</title>
+  <meta name="description" content="인디 게임 스튜디오 SunSetStudio 공식 페이지 및 신작 Cubeast(나만의 큐비스트 1마리 · 공방 v2 · 6면 코어 큐브 로그라이크 덱빌딩) 출시 예정 안내." />
+  <meta name="theme-color" content="#FBF4E4" />
+  <link rel="canonical" href="https://kdynovel1030-cmd.github.io/sunsetstudio/" />
+
+  <!-- Google Search Console 소유권 확인 메타 태그 삽입 자리 -->
+  <!-- Google Search Console에서 발급받은 확인 코드로 아래 content 값을 교체하세요 -->
+  <meta name="google-site-verification" content="YOUR_GOOGLE_SITE_VERIFICATION_CODE" />
+
+  <!-- Open Graph / SNS 공유 메타 -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SunSetStudio" />
+  <meta property="og:title" content="SunSetStudio — Cubeast | 6면 코어 큐브 로그라이크 덱빌딩" />
+  <meta property="og:description" content="나만의 큐비스트 1마리, 공방 v2, 6면 코어 큐브 로그라이크 덱빌딩. Steam 및 텀블벅 출시 예정." />
+  <meta property="og:url" content="https://kdynovel1030-cmd.github.io/sunsetstudio/" />
+
+  <!-- 인라인 SVG 파비콘 (크림 & 청록 큐브) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23FBF4E4'/%3E%3Cpolygon points='32,10 52,21 32,32 12,21' fill='%2325B3AD'/%3E%3Cpolygon points='12,21 32,32 32,54 12,43' fill='%231C9994'/%3E%3Cpolygon points='52,21 32,32 32,54 52,43' fill='%23147470'/%3E%3C/svg%3E" />
+
+  <!-- 웹폰트: Pretendard (폴백: 시스템 한글 고딕) -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+
+  <style>
+    :root {
+      /* U8 크림 톤 + 청록 테마 팔레트 */
+      --bg-cream: #FBF4E4;
+      --bg-surface: #FFFBF2;
+      --bg-surface-alt: #F3E9D2;
+      --bg-elevated: #FFFFFF;
+
+      --teal: #1C9994;
+      --teal-dark: #147470;
+      --teal-deeper: #0F5956;
+      --teal-soft: rgba(28, 153, 148, 0.12);
+      --teal-soft-strong: rgba(28, 153, 148, 0.20);
+
+      --sunset-warm: #D96B43;
+      --sunset-soft: rgba(217, 107, 67, 0.13);
+
+      --ink: #231F1B;
+      --ink-secondary: #574F45;
+      --ink-muted: #766C60;
+
+      /* U7 원칙: 검은·흰 테두리 대신 바탕색 + 옅은 그림자 */
+      --shadow-sm: 0 4px 16px rgba(48, 39, 24, 0.06);
+      --shadow-md: 0 10px 30px rgba(48, 39, 24, 0.08);
+      --shadow-lg: 0 18px 46px rgba(28, 153, 148, 0.14);
+
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 28px;
+      --radius-pill: 999px;
+
+      --container: 1120px;
+      --transition: 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--ink);
+      line-height: 1.65;
+      word-break: keep-all;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* 헤더 & 내비게이션 */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(251, 244, 228, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 1px 0 rgba(35, 31, 27, 0.06);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      gap: 16px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.125rem;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      background: var(--bg-surface);
+      box-shadow: var(--shadow-sm);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .brand-sub {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--teal-dark);
+      background: var(--teal-soft);
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-links a {
+      padding: 8px 15px;
+      border-radius: var(--radius-pill);
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: var(--teal-soft);
+      color: var(--teal-dark);
+      outline: none;
+    }
+
+    .nav-cta {
+      background: var(--teal) !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 6px 16px rgba(28, 153, 148, 0.24);
+    }
+
+    .nav-cta:hover,
+    .nav-cta:focus-visible {
+      background: var(--teal-dark) !important;
+      color: #FFFFFF !important;
+      transform: translateY(-1px);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 12px;
+      background: var(--bg-surface);
+      color: var(--ink);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* 공통 섹션 스타일 */
+    section {
+      padding: 88px 0;
+    }
+
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      background: var(--teal-soft);
+      color: var(--teal-dark);
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+    }
+
+    .section-eyebrow.warm {
+      background: var(--sunset-soft);
+      color: #A94724;
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      font-size: clamp(1.75rem, 3.2vw, 2.45rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+      color: var(--ink);
+    }
+
+    .section-desc {
+      margin: 0;
+      max-width: 660px;
+      font-size: 1.05rem;
+      color: var(--ink-secondary);
+    }
+
+    .section-head {
+      margin-bottom: 44px;
+    }
+
+    .section-head.center {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* 버튼 */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 26px;
+      border-radius: var(--radius-pill);
+      border: none;
+      font-size: 0.98rem;
+      font-weight: 700;
+      transition: transform var(--transition), background var(--transition), box-shadow var(--transition), color var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: #FFFFFF;
+      box-shadow: 0 10px 24px rgba(28, 153, 148, 0.28);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background: var(--teal-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(28, 153, 148, 0.34);
+      outline: none;
+    }
+
+    .btn-secondary {
+      background: var(--bg-surface);
+      color: var(--ink);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary:hover,
+    .btn-secondary:focus-visible {
+      background: var(--bg-elevated);
+      color: var(--teal-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      outline: none;
+    }
+
+    /* 히어로 섹션 */
+    .hero {
+      padding: 64px 0 88px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 44px;
+      align-items: center;
+    }
+
+    .hero-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      margin: 0 0 18px;
+      font-size: clamp(2.2rem, 4.6vw, 3.45rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.16;
+      color: var(--ink);
+    }
+
+    .hero-title .accent {
+      color: var(--teal);
+    }
+
+    .hero-lead {
+      margin: 0 0 28px;
+      font-size: 1.1rem;
+      color: var(--ink-secondary);
+      max-width: 560px;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface);
+      box-shadow: var(--shadow-sm);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .hero-pill .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+      flex-shrink: 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* 인터랙티브 6면 코어 큐브 쇼케이스 카드 */
+    .cube-showcase {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cube-showcase::before {
+      content: "";
+      position: absolute;
+      inset: -40% -20% auto auto;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(28, 153, 148, 0.14) 0%, rgba(28, 153, 148, 0) 70%);
+      pointer-events: none;
+    }
+
+    .showcase-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .showcase-label {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--teal-dark);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .showcase-tag {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--ink-secondary);
+      background: var(--bg-cream);
+      padding: 5px 11px;
+      border-radius: var(--radius-pill);
+    }
+
+    .cube-stage {
+      display: grid;
+      place-items: center;
+      padding: 14px 0 18px;
+    }
+
+    .cube-svg {
+      width: 196px;
+      height: 196px;
+      filter: drop-shadow(0 16px 24px rgba(28, 153, 148, 0.18));
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .cube-showcase:hover .cube-svg {
+      transform: translateY(-4px) scale(1.02);
+    }
+
+    .face-selector {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .face-btn {
+      padding: 9px 8px;
+      border: none;
+      border-radius: 12px;
+      background: var(--bg-cream);
+      color: var(--ink-secondary);
+      font-size: 0.84rem;
+      font-weight: 700;
+      text-align: center;
+      transition: background var(--transition), color var(--transition), transform var(--transition);
+    }
+
+    .face-btn:hover {
+      background: var(--teal-soft);
+      color: var(--teal-dark);
+    }
+
+    /* U8: 고른 것 = 청록 + 흰 글씨 */
+    .face-btn.active {
+      background: var(--teal);
+      color: #FFFFFF;
+      box-shadow: 0 6px 14px rgba(28, 153, 148, 0.25);
+    }
+
+    .face-detail {
+      background: var(--bg-cream);
+      border-radius: 16px;
+      padding: 16px 18px;
+      min-height: 92px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .face-detail-title {
+      font-size: 0.96rem;
+      font-weight: 800;
+      color: var(--teal-deeper);
+      margin-bottom: 4px;
+    }
+
+    .face-detail-text {
+      font-size: 0.88rem;
+      color: var(--ink-secondary);
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    /* 스튜디오 소개 섹션 */
+    .studio-section {
+      background: var(--bg-surface);
+      box-shadow: inset 0 1px 0 rgba(35, 31, 27, 0.04), inset 0 -1px 0 rgba(35, 31, 27, 0.04);
+    }
+
+    .studio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .studio-card {
+      background: var(--bg-cream);
+      border-radius: var(--radius-md);
+      padding: 28px 24px;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .studio-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--teal-soft);
+      color: var(--teal-dark);
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+    }
+
+    .studio-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.14rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .studio-card p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--ink-secondary);
+    }
+
+    /* Cubeast 핵심 특징 섹션 */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      margin-bottom: 32px;
+    }
+
+    .feature-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: 30px 26px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition), box-shadow var(--transition);
+      position: relative;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .feature-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--teal);
+      color: #FFFFFF;
+      font-size: 0.86rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .feature-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.24rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .feature-subtitle {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--teal-dark);
+      margin: 0 0 12px;
+    }
+
+    .feature-card p {
+      margin: 0 0 18px;
+      font-size: 0.95rem;
+      color: var(--ink-secondary);
+      flex: 1;
+    }
+
+    .feature-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 5px 11px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-cream);
+      color: var(--ink-secondary);
+    }
+
+    /* 플레이 루프 바 */
+    .loop-panel {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .loop-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .loop-header h3 {
+      margin: 0;
+      font-size: 1.08rem;
+      font-weight: 800;
+    }
+
+    .loop-header span {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--teal-dark);
+    }
+
+    .loop-steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .loop-step {
+      background: var(--bg-cream);
+      border-radius: 16px;
+      padding: 18px 16px;
+      text-align: center;
+    }
+
+    .loop-step-badge {
+      display: inline-block;
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: var(--teal-dark);
+      background: var(--teal-soft);
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 8px;
+    }
+
+    .loop-step strong {
+      display: block;
+      font-size: 0.96rem;
+      margin-bottom: 4px;
+      color: var(--ink);
+    }
+
+    .loop-step small {
+      display: block;
+      font-size: 0.83rem;
+      color: var(--ink-secondary);
+      line-height: 1.45;
+    }
+
+    /* 스팀 / 텀블벅 출시 예정 섹션 */
+    .release-section {
+      background: var(--bg-surface);
+      box-shadow: inset 0 1px 0 rgba(35, 31, 27, 0.04), inset 0 -1px 0 rgba(35, 31, 27, 0.04);
+    }
+
+    .release-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .release-card {
+      background: var(--bg-cream);
+      border-radius: var(--radius-lg);
+      padding: 34px 30px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 22px;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .release-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .release-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .platform-name {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.32rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .status-pill {
+      padding: 6px 13px;
+      border-radius: var(--radius-pill);
+      font-size: 0.8rem;
+      font-weight: 800;
+      background: var(--teal);
+      color: #FFFFFF;
+      white-space: nowrap;
+    }
+
+    .status-pill.warm {
+      background: var(--sunset-warm);
+      color: #FFFFFF;
+    }
+
+    .release-card p {
+      margin: 0 0 16px;
+      font-size: 0.96rem;
+      color: var(--ink-secondary);
+    }
+
+    .release-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .release-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .release-list li::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--teal);
+      flex-shrink: 0;
+    }
+
+    .release-card-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(35, 31, 27, 0.08);
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--ink-muted);
+    }
+
+    /* 연락처 섹션 */
+    .contact-box {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      padding: 44px 40px;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 36px;
+      align-items: center;
+    }
+
+    .contact-cards {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-item {
+      background: var(--bg-cream);
+      border-radius: 18px;
+      padding: 20px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .contact-item-info small {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--teal-dark);
+      margin-bottom: 4px;
+    }
+
+    .contact-item-info strong {
+      display: block;
+      font-size: 1rem;
+      color: var(--ink);
+      word-break: break-all;
+    }
+
+    .mini-btn {
+      padding: 9px 15px;
+      border: none;
+      border-radius: var(--radius-pill);
+      background: var(--teal);
+      color: #FFFFFF;
+      font-size: 0.84rem;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .mini-btn:hover,
+    .mini-btn:focus-visible {
+      background: var(--teal-dark);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .copy-feedback {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--teal-dark);
+      min-height: 20px;
+      margin-top: 8px;
+    }
+
+    /* 푸터 */
+    .site-footer {
+      padding: 36px 0 48px;
+      color: var(--ink-muted);
+      font-size: 0.88rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(35, 31, 27, 0.08);
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-weight: 600;
+    }
+
+    .footer-links a:hover {
+      color: var(--teal-dark);
+    }
+
+    /* 반응형 브레이크포인트 */
+    @media (max-width: 960px) {
+      .hero-grid,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .studio-grid,
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .loop-steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .release-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      section {
+        padding: 64px 0;
+      }
+
+      .hero {
+        padding: 40px 0 64px;
+      }
+
+      .mobile-menu-btn {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: var(--bg-cream);
+        padding: 16px 24px 22px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        box-shadow: var(--shadow-md);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        text-align: center;
+        padding: 12px 16px;
+      }
+
+      .contact-box {
+        padding: 28px 22px;
+      }
+
+      .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .loop-steps {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 상단 내비게이션 -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="SunSetStudio 홈으로 이동">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 64 64" fill="none">
+            <polygon points="32,8 54,20 32,32 10,20" fill="#25B3AD" />
+            <polygon points="10,20 32,32 32,56 10,44" fill="#1C9994" />
+            <polygon points="54,20 32,32 32,56 54,44" fill="#147470" />
+          </svg>
+        </span>
+        <span>SunSetStudio</span>
+        <span class="brand-sub">SSSD</span>
+      </a>
+
+      <button class="mobile-menu-btn" type="button" id="menuToggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="primaryNav">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <line x1="4" y1="7" x2="20" y2="7" />
+          <line x1="4" y1="12" x2="20" y2="12" />
+          <line x1="4" y1="17" x2="20" y2="17" />
+        </svg>
+      </button>
+
+      <nav class="nav-links" id="primaryNav" aria-label="주요 메뉴">
+        <a href="#studio">스튜디오 소개</a>
+        <a href="#cubeast">Cubeast</a>
+        <a href="#release">출시 예정</a>
+        <a href="#contact" class="nav-cta">연락처</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- 히어로 섹션 -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-badge-row">
+            <span class="section-eyebrow">SunSetStudio 공식 프로젝트</span>
+            <span class="section-eyebrow warm">Steam · 텀블벅 출시 예정</span>
+          </div>
+
+          <h1 class="hero-title">
+            여섯 면의 코어 위에 빚는<br />
+            나만의 <span class="accent">Cubeast</span>
+          </h1>
+
+          <p class="hero-lead">
+            <strong>SunSetStudio</strong>가 선보이는 전략 로그라이크 덱빌딩 <strong>Cubeast</strong>.
+            단 한 마리의 <strong>나만의 큐비스트</strong>를 <strong>공방 v2</strong>에서 정교하게 개조하고,
+            <strong>6면 코어 큐브</strong>를 회전·조합해 매 판 새로운 전술을 완성하세요.
+          </p>
+
+          <div class="hero-pills" aria-label="Cubeast 핵심 키워드">
+            <span class="hero-pill"><span class="dot"></span>나만의 큐비스트 1마리</span>
+            <span class="hero-pill"><span class="dot"></span>공방 v2 빌드 개조</span>
+            <span class="hero-pill"><span class="dot"></span>6면 코어 큐브 덱빌딩</span>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#cubeast" class="btn btn-primary">Cubeast 핵심 특징 보기</a>
+            <a href="#release" class="btn btn-secondary">스팀 · 텀블벅 일정 안내</a>
+          </div>
+        </div>
+
+        <!-- 인터랙티브 6면 코어 큐브 프리뷰 -->
+        <aside class="cube-showcase" aria-label="6면 코어 큐브 미리보기">
+          <div class="showcase-top">
+            <span class="showcase-label">6-Face Core Cube</span>
+            <span class="showcase-tag">면을 눌러 확인</span>
+          </div>
+
+          <div class="cube-stage">
+            <svg class="cube-svg" viewBox="0 0 220 220" role="img" aria-label="Cubeast 6면 코어 큐브 일러스트">
+              <!-- 바닥 옅은 그림자 -->
+              <ellipse cx="110" cy="196" rx="64" ry="12" fill="rgba(28, 153, 148, 0.14)" />
+              <!-- 큐브 윗면 -->
+              <polygon id="cubeTop" points="110,24 186,66 110,108 34,66" fill="#27B8B2" />
+              <!-- 큐브 왼쪽면 -->
+              <polygon id="cubeLeft" points="34,66 110,108 110,184 34,142" fill="#1C9994" />
+              <!-- 큐브 오른쪽면 -->
+              <polygon id="cubeRight" points="186,66 110,108 110,184 186,142" fill="#147470" />
+
+              <!-- 코어 격자선 (크림 톤 포인트) -->
+              <g stroke="#FBF4E4" stroke-opacity="0.45" stroke-width="2" fill="none">
+                <line x1="72" y1="45" x2="148" y2="87" />
+                <line x1="148" y1="45" x2="72" y2="87" />
+                <line x1="72" y1="87" x2="72" y2="163" />
+                <line x1="34" y1="104" x2="110" y2="146" />
+                <line x1="148" y1="87" x2="148" y2="163" />
+                <line x1="186" y1="104" x2="110" y2="146" />
+              </g>
+
+              <!-- 중앙 코어 핵 -->
+              <circle cx="110" cy="108" r="14" fill="#FBF4E4" />
+              <circle id="cubeCoreDot" cx="110" cy="108" r="7" fill="#1C9994" />
+            </svg>
+          </div>
+
+          <div class="face-selector" role="tablist" aria-label="코어 큐브 6면 선택">
+            <button class="face-btn active" type="button" role="tab" aria-selected="true" data-face="0">1면 · 코어</button>
+            <button class="face-btn" type="button" role="tab" aria-selected="false" data-face="1">2면 · 공격</button>
+            <button class="face-btn" type="button" role="tab" aria-selected="false" data-face="2">3면 · 방어</button>
+            <button class="face-btn" type="button" role="tab" aria-selected="false" data-face="3">4면 · 공방</button>
+            <button class="face-btn" type="button" role="tab" aria-selected="false" data-face="4">5면 · 시너지</button>
+            <button class="face-btn" type="button" role="tab" aria-selected="false" data-face="5">6면 · 각성</button>
+          </div>
+
+          <div class="face-detail" id="faceDetail" aria-live="polite">
+            <div class="face-detail-title" id="faceTitle">1면 · 나만의 큐비스트 코어</div>
+            <p class="face-detail-text" id="faceDesc">단 한 마리의 큐비스트가 지닌 고유 정체성. 여정의 시작부터 끝까지 모든 빌드의 중심이 됩니다.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SunSetStudio 소개 -->
+    <section id="studio" class="studio-section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-eyebrow">About SunSetStudio</span>
+          <h2 class="section-title">규칙의 깊이와 손맛을 빚는 인디 게임 스튜디오</h2>
+          <p class="section-desc">
+            <strong>SunSetStudio(SSSD)</strong>는 한눈에 읽히는 직관적인 UI와
+            운이 아닌 선택이 결과를 가르는 단단한 전략 게임을 만듭니다.
+            플레이어의 판단 하나하나가 선명한 재미로 돌아오는 경험을 설계합니다.
+          </p>
+        </div>
+
+        <div class="studio-grid">
+          <article class="studio-card">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+              </svg>
+            </div>
+            <h3>선택이 증명되는 전략</h3>
+            <p>
+              숨겨진 확률보다 명확한 규칙과 사전 예고, 그리고 기발한 시너지 설계로
+              생각하는 재미가 살아있는 전략 구조를 추구합니다.
+            </p>
+          </article>
+
+          <article class="studio-card">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="4" />
+                <path d="M9 12h6" />
+                <path d="M12 9v6" />
+              </svg>
+            </div>
+            <h3>단정하고 읽기 쉬운 화면</h3>
+            <p>
+              복잡한 덱빌딩 정보도 피로하지 않게 읽히도록, 따뜻한 크림 톤과
+              선명한 포인트 컬러를 중심으로 정돈된 UX를 설계합니다.
+            </p>
+          </article>
+
+          <article class="studio-card">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7v5l3 2" />
+              </svg>
+            </div>
+            <h3>플레이어와 함께 다듬는 개발</h3>
+            <p>
+              플레이테스트와 커뮤니티 피드백을 바탕으로 밸런스와 조작감을 꾸준히 개선하며,
+              스팀과 텀블벅을 통해 정식 출시를 준비하고 있습니다.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cubeast 핵심 특징 -->
+    <section id="cubeast">
+      <div class="container">
+        <div class="section-head center">
+          <span class="section-eyebrow">Featured Game · Cubeast</span>
+          <h2 class="section-title">Cubeast 핵심 특징</h2>
+          <p class="section-desc">
+            단 하나의 파트너 큐비스트, 빌드를 완성하는 공방 v2, 그리고 여섯 면을
+            자유롭게 설계하는 코어 큐브 로그라이크 덱빌딩이 하나로 결합됩니다.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card">
+            <span class="feature-num">01</span>
+            <h3>나만의 큐비스트 1마리</h3>
+            <p class="feature-subtitle">단 하나의 파트너에 집중하는 깊은 성장</p>
+            <p>
+              수많은 카드를 일회성으로 소모하는 대신, 나만의 큐비스트 1마리와 끝까지 함께합니다.
+              전투를 거치며 특성·외형·전술 성향을 다듬어 세상에 하나뿐인 파트너를 완성하세요.
+            </p>
+            <div class="feature-tags">
+              <span class="chip">애착 중심 육성</span>
+              <span class="chip">맞춤형 빌드</span>
+              <span class="chip">고유 특성 조합</span>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <span class="feature-num">02</span>
+            <h3>공방 v2 (Workshop v2)</h3>
+            <p class="feature-subtitle">큐브 파츠를 조합·개조하는 전략 허브</p>
+            <p>
+              한층 정교해진 공방 v2에서 코어 면의 효과를 교체하고, 파츠를 강화하며,
+              불필요한 요소를 덜어낼 수 있습니다. 전장 밖의 정비가 곧 다음 전투의 승부를 가릅니다.
+            </p>
+            <div class="feature-tags">
+              <span class="chip">면 커스터마이징</span>
+              <span class="chip">파츠 강화·조합</span>
+              <span class="chip">전술 리빌딩</span>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <span class="feature-num">03</span>
+            <h3>6면 코어 큐브 로그라이크 덱빌딩</h3>
+            <p class="feature-subtitle">여섯 면의 연결이 만들어내는 입체적 시너지</p>
+            <p>
+              평면 카드 뭉치를 넘어, 6개의 면으로 이루어진 코어 큐브 자체가 곧 당신의 덱입니다.
+              큐브를 회전하고 인접한 면을 맞물려 매 런마다 전혀 다른 연쇄 콤보와 돌파구를 찾으세요.
+            </p>
+            <div class="feature-tags">
+              <span class="chip">6면 입체 덱</span>
+              <span class="chip">회전 연쇄 콤보</span>
+              <span class="chip">로그라이크 리플레이</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- 코어 플레이 루프 -->
+        <div class="loop-panel" aria-label="Cubeast 핵심 플레이 루프">
+          <div class="loop-header">
+            <h3>Cubeast 플레이 흐름</h3>
+            <span>매 판 새로운 6면 시너지 설계</span>
+          </div>
+          <div class="loop-steps">
+            <div class="loop-step">
+              <span class="loop-step-badge">STEP 01</span>
+              <strong>큐비스트 선택</strong>
+              <small>나만의 큐비스트 1마리와 초기 코어 큐브로 여정을 시작합니다.</small>
+            </div>
+            <div class="loop-step">
+              <span class="loop-step-badge">STEP 02</span>
+              <strong>6면 코어 전투</strong>
+              <small>코어 큐브의 면을 굴리고 조합해 적의 패턴을 돌파합니다.</small>
+            </div>
+            <div class="loop-step">
+              <span class="loop-step-badge">STEP 03</span>
+              <strong>공방 v2 개조</strong>
+              <small>획득한 파츠와 강화로 각 면을 교체하고 시너지를 압축합니다.</small>
+            </div>
+            <div class="loop-step">
+              <span class="loop-step-badge">STEP 04</span>
+              <strong>빌드 완성 &amp; 도전</strong>
+              <small>완성된 6면 코어와 큐비스트로 최심부 보스에 도전합니다.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 스팀 / 텀블벅 출시 예정 안내 -->
+    <section id="release" class="release-section">
+      <div class="container">
+        <div class="section-head center">
+          <span class="section-eyebrow warm">Upcoming Release</span>
+          <h2 class="section-title">스팀 · 텀블벅 출시 예정 안내</h2>
+          <p class="section-desc">
+            <strong>Cubeast</strong>는 PC(Steam) 정식 출시와 텀블벅(Tumblbug) 크라우드펀딩을 목표로
+            핵심 시스템과 콘텐츠를 완성해 나가고 있습니다.
+          </p>
+        </div>
+
+        <div class="release-grid">
+          <article class="release-card">
+            <div>
+              <div class="release-card-top">
+                <div class="platform-name">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1C9994" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="2" y="4" width="20" height="14" rx="3" />
+                    <path d="M8 20h8" />
+                    <path d="M12 18v2" />
+                  </svg>
+                  <span>Steam (PC)</span>
+                </div>
+                <span class="status-pill">출시 예정</span>
+              </div>
+              <p>
+                글로벌 PC 플레이어를 위한 Steam 상점 페이지 오픈 및 체험판(데모) 공개를 준비 중입니다.
+                오픈 시 위시리스트 추가와 데모 플레이 링크가 이곳에 즉시 업데이트됩니다.
+              </p>
+              <ul class="release-list">
+                <li>Windows PC 지원 및 컨트롤러/마우스 최적화</li>
+                <li>한국어 · 영어 지원 예정</li>
+                <li>출시 전 체험판(데모) 공개 예정</li>
+              </ul>
+            </div>
+            <div class="release-card-foot">
+              <span>Steam 상점 페이지 준비 중</span>
+              <span>Wishlist Coming Soon</span>
+            </div>
+          </article>
+
+          <article class="release-card">
+            <div>
+              <div class="release-card-top">
+                <div class="platform-name">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#D96B43" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" />
+                    <path d="M12 12l8-4.5" />
+                    <path d="M12 12v9" />
+                    <path d="M12 12L4 7.5" />
+                  </svg>
+                  <span>텀블벅 (Tumblbug)</span>
+                </div>
+                <span class="status-pill warm">펀딩 예정</span>
+              </div>
+              <p>
+                후원자 여러분과 함께 Cubeast의 완성도를 한 단계 더 끌어올릴 텀블벅 크라우드펀딩을 준비하고 있습니다.
+                공개 예정 알림 신청 및 리워드 구성이 곧 공개됩니다.
+              </p>
+              <ul class="release-list">
+                <li>후원자 전용 크레딧 및 얼리버드 혜택 기획 중</li>
+                <li>개발 일지 및 공방 v2 · 6면 코어 제작기 공유</li>
+                <li>펀딩 오픈 시 공식 페이지 링크 즉시 연동</li>
+              </ul>
+            </div>
+            <div class="release-card-foot">
+              <span>텀블벅 공개 예정 페이지 준비 중</span>
+              <span>Crowdfunding Coming Soon</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 연락처 섹션 -->
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <span class="section-eyebrow">Contact</span>
+            <h2 class="section-title">SunSetStudio에 문의하기</h2>
+            <p class="section-desc">
+              퍼블리싱·미디어 협업, 스팀 및 텀블벅 관련 문의, 플레이테스트 피드백 등
+              언제든 아래 공식 연락처로 편하게 메시지를 보내 주세요.
+            </p>
+            <div class="copy-feedback" id="copyFeedback" role="status" aria-live="polite"></div>
+          </div>
+
+          <div class="contact-cards">
+            <div class="contact-item">
+              <div class="contact-item-info">
+                <small>공식 이메일</small>
+                <strong id="studioEmail">kdynovel1030@gmail.com</strong>
+              </div>
+              <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <a class="mini-btn" href="mailto:kdynovel1030@gmail.com?subject=%5BSunSetStudio%20%2F%20Cubeast%5D%20%EB%AC%B8%EC%9D%98">메일 보내기</a>
+                <button class="mini-btn" type="button" id="copyEmailBtn" style="background: var(--bg-surface); color: var(--teal-dark); box-shadow: var(--shadow-sm);">복사</button>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-info">
+                <small>GitHub</small>
+                <strong>github.com/kdynovel1030-cmd</strong>
+              </div>
+              <a class="mini-btn" href="https://github.com/kdynovel1030-cmd" target="_blank" rel="noopener noreferrer">방문하기</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>SunSetStudio (SSSD)</strong> · Cubeast Official Page<br />
+        <span>© 2026 SunSetStudio. All rights reserved.</span>
+      </div>
+      <div class="footer-links">
+        <a href="#studio">스튜디오</a>
+        <a href="#cubeast">Cubeast</a>
+        <a href="#release">출시 예정</a>
+        <a href="#contact">연락처</a>
+        <a href="#top">맨 위로 ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // 모바일 메뉴 토글
+      var menuToggle = document.getElementById("menuToggle");
+      var primaryNav = document.getElementById("primaryNav");
+      if (menuToggle && primaryNav) {
+        menuToggle.addEventListener("click", function () {
+          var isOpen = primaryNav.classList.toggle("open");
+          menuToggle.setAttribute("aria-expanded", String(isOpen));
+        });
+        primaryNav.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", function () {
+            primaryNav.classList.remove("open");
+            menuToggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+
+      // 6면 코어 큐브 인터랙션
+      var faces = [
+        {
+          title: "1면 · 나만의 큐비스트 코어",
+          desc: "단 한 마리의 큐비스트가 지닌 고유 정체성. 여정의 시작부터 끝까지 모든 빌드의 중심이 됩니다.",
+          top: "#27B8B2",
+          left: "#1C9994",
+          right: "#147470",
+          dot: "#1C9994"
+        },
+        {
+          title: "2면 · 전술 공격 면",
+          desc: "연쇄 타격과 조건부 증폭 효과를 배치해 원하는 타이밍에 결정적인 화력을 폭발시킵니다.",
+          top: "#E6845C",
+          left: "#D96B43",
+          right: "#147470",
+          dot: "#D96B43"
+        },
+        {
+          title: "3면 · 방어 & 대응 면",
+          desc: "사전 예고된 적의 위협에 맞춰 보호막, 반격, 위치 제어 효과를 설계해 피해를 최소화합니다.",
+          top: "#27B8B2",
+          left: "#147470",
+          right: "#0F5956",
+          dot: "#147470"
+        },
+        {
+          title: "4면 · 공방 v2 개조 슬롯",
+          desc: "공방 v2에서 파츠를 교체·강화하고 불필요한 면을 정리해 군더더기 없는 덱으로 압축합니다.",
+          top: "#33C4BE",
+          left: "#1C9994",
+          right: "#176E6A",
+          dot: "#27B8B2"
+        },
+        {
+          title: "5면 · 회전 시너지 면",
+          desc: "큐브를 회전시켰을 때 인접한 면과 맞물려 추가 발동과 연쇄 콤보를 일으키는 핵심 축입니다.",
+          top: "#1C9994",
+          left: "#27B8B2",
+          right: "#147470",
+          dot: "#1C9994"
+        },
+        {
+          title: "6면 · 각성 & 결전 면",
+          desc: "조건이 누적되면 열리는 마지막 6번째 면. 나만의 큐비스트 빌드를 완성하는 피니셔 역할을 맡습니다.",
+          top: "#23A8A2",
+          left: "#167C78",
+          right: "#D96B43",
+          dot: "#D96B43"
+        }
+      ];
+
+      var faceBtns = document.querySelectorAll(".face-btn");
+      var faceTitle = document.getElementById("faceTitle");
+      var faceDesc = document.getElementById("faceDesc");
+      var cubeTop = document.getElementById("cubeTop");
+      var cubeLeft = document.getElementById("cubeLeft");
+      var cubeRight = document.getElementById("cubeRight");
+      var cubeCoreDot = document.getElementById("cubeCoreDot");
+
+      faceBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var idx = Number(btn.getAttribute("data-face"));
+          var data = faces[idx];
+          if (!data) return;
+
+          faceBtns.forEach(function (b) {
+            b.classList.remove("active");
+            b.setAttribute("aria-selected", "false");
+          });
+          btn.classList.add("active");
+          btn.setAttribute("aria-selected", "true");
+
+          faceTitle.textContent = data.title;
+          faceDesc.textContent = data.desc;
+          cubeTop.setAttribute("fill", data.top);
+          cubeLeft.setAttribute("fill", data.left);
+          cubeRight.setAttribute("fill", data.right);
+          cubeCoreDot.setAttribute("fill", data.dot);
+        });
+      });
+
+      // 이메일 원클릭 복사
+      var copyBtn = document.getElementById("copyEmailBtn");
+      var emailEl = document.getElementById("studioEmail");
+      var feedbackEl = document.getElementById("copyFeedback");
+      if (copyBtn && emailEl && feedbackEl) {
+        copyBtn.addEventListener("click", function () {
+          var email = emailEl.textContent.trim();
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(email).then(function () {
+              feedbackEl.textContent = "이메일 주소가 복사되었습니다: " + email;
+            }).catch(function () {
+              feedbackEl.textContent = "이메일 주소: " + email;
+            });
+          } else {
+            feedbackEl.textContent = "이메일 주소: " + email;
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
